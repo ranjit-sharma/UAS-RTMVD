@@ -44,12 +44,6 @@ export function FlightTrackingPage() {
   const mapboxToken = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN || 'myaccessToken';
 
   const mapTypes = {
-    osm: { 
-      name: 'Street Map (CartoDB)', 
-      url: 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', 
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-      maxZoom: 19
-    },
     mapbox: {
       name: 'Mapbox Streets',
       url: `https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=${mapboxToken}`,
@@ -66,7 +60,7 @@ export function FlightTrackingPage() {
       maxZoom: 19
     }
   };
-  const [selectedMapType, setSelectedMapType] = useState('osm');
+  const [selectedMapType, setSelectedMapType] = useState('mapbox');
   const [mapInstance, setMapInstance] = useState(null);
   const [isAutoPanEnabled, setIsAutoPanEnabled] = useState(true);
   const [showTrajectory, setShowTrajectory] = useState(true);
