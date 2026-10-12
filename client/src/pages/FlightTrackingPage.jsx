@@ -118,7 +118,7 @@ export function FlightTrackingPage() {
   }), []);
 
   return (
-    <div className="p-6 space-y-6 flex flex-col h-full min-h-screen" style={{ background: 'var(--neu-bg)' }}>
+    <div className="p-3.5 sm:p-6 space-y-4 sm:space-y-6 flex flex-col h-full min-h-screen" style={{ background: 'var(--neu-bg)' }}>
       <div className="flex items-center justify-between flex-wrap gap-6">
         <div>
           <h1 className="text-2xl font-bold text-main">Flight Tracking</h1>

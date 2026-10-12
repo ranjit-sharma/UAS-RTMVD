@@ -35,12 +35,24 @@ export function Sidebar({ onOpenAlerts, unreadAlerts, isOpen, onClose }) {
       )}
 
       <aside 
-        className={`fixed inset-y-0 left-0 z-[1000] h-screen w-64 shrink-0 p-4 flex flex-col justify-between select-none transition-transform duration-300 md:relative md:translate-x-0 ${isOpen ? "translate-x-0" : "-translate-x-full"}`}
+        className={`fixed inset-y-0 left-0 z-[1000] h-[100dvh] max-h-[100dvh] w-72 sm:w-64 shrink-0 p-4 flex flex-col justify-between select-none transition-transform duration-300 overflow-y-auto overscroll-contain md:h-screen md:max-h-screen md:relative md:translate-x-0 md:overflow-visible ${isOpen ? "translate-x-0 shadow-2xl" : "-translate-x-full"}`}
         style={{ background: 'var(--neu-bg)' }}
       >
-        {/* Brand Area */}
-        <div className="flex items-center justify-center pt-2 pb-4">
-          <Logo size="medium" showText={true} />
+        {/* Brand Area + Mobile Close */}
+        <div className="flex items-center justify-between pt-2 pb-4 md:justify-center relative">
+          <div className="flex-1 flex justify-center">
+            <Logo size="medium" showText={true} />
+          </div>
+          <button
+            onClick={onClose}
+            className="md:hidden p-2 rounded-xl neu-button text-subtle hover:text-main focus:outline-none absolute right-0"
+            aria-label="Close Navigation Menu"
+            title="Close menu"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+              <path d="M18 6L6 18M6 6l12 12" />
+            </svg>
+          </button>
         </div>
 
         {/* Header Controls: Mode + Theme */}
@@ -80,19 +92,27 @@ export function Sidebar({ onOpenAlerts, unreadAlerts, isOpen, onClose }) {
       </nav>
 
       {/* Fixed Bottom Controls */}
-      <div className="shrink-0 flex flex-col gap-3">
+      <div className="shrink-0 flex flex-col gap-3 pt-3 border-t border-[var(--border-subtle)]/40 mt-auto">
         <div className="neu-flat p-3 rounded-xl">
           <div className="flex items-center gap-3 mb-2.5">
             <UserAvatar user={user} size="md" />
             <div className="min-w-0 flex-1">
-              <p className="text-xs font-semibold truncate text-main">{user?.name}</p>
-              <p className="text-subtle text-[11px] truncate capitalize">{user?.role}</p>
+              <p className="text-xs font-semibold truncate text-main">{user?.name || 'Administrator'}</p>
+              <div className="flex items-center gap-1.5 mt-0.5">
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                <p className="text-subtle text-[11px] truncate capitalize font-bold">{user?.role || 'admin'}</p>
+              </div>
             </div>
           </div>
           <button
             onClick={handleLogout}
-            className="w-full neu-button py-2 text-subtle hover:text-red-400 text-xs font-medium transition-colors"
+            className="w-full neu-button py-2.5 text-red-500 hover:text-red-400 text-xs font-bold transition-colors flex items-center justify-center gap-2 rounded-lg"
           >
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+              <polyline points="16 17 21 12 16 7"></polyline>
+              <line x1="21" y1="12" x2="9" y2="12"></line>
+            </svg>
             Sign Out
           </button>
         </div>

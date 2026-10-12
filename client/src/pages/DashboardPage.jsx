@@ -1,4 +1,4 @@
-﻿import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDashboard } from '../hooks/useDashboard.js';
 import { useLiveObservations } from '../hooks/useLiveObservations.js';
 import { useDataSource } from '../context/DataSourceContext.jsx';
@@ -81,7 +81,7 @@ export function DashboardPage() {
   if (error) return <div className="p-8"><ErrorMessage message={error} /></div>;
 
   return (
-    <div className="p-6 space-y-6 flex-1 min-h-screen" style={{ background: 'var(--neu-bg)' }}>
+    <div className="p-3.5 sm:p-6 space-y-4 sm:space-y-6 flex-1 min-h-screen" style={{ background: 'var(--neu-bg)' }}>
 
       {/* Header */}
       <div className="flex items-center justify-between flex-wrap gap-4">
