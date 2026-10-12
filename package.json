@@ -4,10 +4,10 @@
   "description": "UASS Real-Time Monitoring and Visualization System — monorepo root",
   "private": true,
   "scripts": {
-    "build": "npm install --prefix server",
+    "build": "npm install --prefix server && npm install --prefix client && npm run build --prefix client",
     "dev:server": "npm run dev --prefix server",
     "dev:client": "npm run dev --prefix client",
-    "start": "npm run start --prefix server",
+    "start": "node server/src/server.js",
     "start:server": "npm run start --prefix server",
     "test:server": "npm run test --prefix server",
     "test:client": "npm run test --prefix client",
