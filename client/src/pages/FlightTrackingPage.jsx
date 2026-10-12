@@ -19,7 +19,6 @@ function calculateDistance(lat1, lon1, lat2, lon2) {
 }
 
 import * as L from 'leaflet';
-import { MBTiles } from 'leaflet-tilelayer-mbtiles-ts';
 import { useMap, useMapEvents } from 'react-leaflet';
 import { useEffect, useState, useMemo } from 'react';
 import { AltitudeProfileChart } from '../components/charts/AltitudeProfileChart.jsx';
@@ -30,18 +29,6 @@ function MapEvents({ center, isAutoPanEnabled, setIsAutoPanEnabled }) {
   useMapEvents({ dragstart: () => { if (isAutoPanEnabled) setIsAutoPanEnabled(false); } });
   useEffect(() => { setTimeout(() => { map.invalidateSize(); }, 200); }, [map]);
   useEffect(() => { if (center && isAutoPanEnabled) map.flyTo(center, map.getZoom(), { animate: true, duration: 1.5 }); }, [center, isAutoPanEnabled, map]);
-  return null;
-}
-
-function MBTilesLayer({ url }) {
-  const map = useMap();
-  useEffect(() => {
-    if (!url) return;
-    try {
-      const layer = new MBTiles(url, { minZoom: 0, maxZoom: 18 }).addTo(map);
-      return () => map.removeLayer(layer);
-    } catch (e) {}
-  }, [map, url]);
   return null;
 }
 
@@ -201,15 +188,9 @@ export function FlightTrackingPage() {
               setIsAutoPanEnabled={setIsAutoPanEnabled}
             />
             
-            {mapTypes[selectedMapType].isMBTiles ? (
-              <MBTilesLayer url={mapTypes[selectedMapType].url} />
-            ) : (
-              <>
-                <TileLayer url={mapTypes[selectedMapType].url} attribution={mapTypes[selectedMapType].attribution} />
-                {mapTypes[selectedMapType].overlayUrl && (
-                  <TileLayer url={mapTypes[selectedMapType].overlayUrl} zIndex={10} />
-                )}
-              </>
+            <TileLayer url={mapTypes[selectedMapType].url} attribution={mapTypes[selectedMapType].attribution} />
+            {mapTypes[selectedMapType].overlayUrl && (
+              <TileLayer url={mapTypes[selectedMapType].overlayUrl} zIndex={10} />
             )}
             
             {showTrajectory && (

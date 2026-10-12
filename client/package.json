@@ -17,8 +17,6 @@
     "@hookform/resolvers": "^5.9.1",
     "axios": "^1.20.0",
     "leaflet": "^1.9.4",
-    "leaflet-locationpicker": "^0.3.4",
-    "leaflet-tilelayer-mbtiles-ts": "^1.6.0",
     "lucide-react": "^1.48.0",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
