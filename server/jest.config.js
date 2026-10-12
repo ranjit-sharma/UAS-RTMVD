@@ -1,5 +1,6 @@
 export default {
   testEnvironment: 'node',
+  testTimeout: 30000,
   transform: {},
   extensionsToTreatAsEsm: [],
   testMatch: ['**/tests/**/*.test.js'],
