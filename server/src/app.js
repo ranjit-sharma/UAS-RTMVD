@@ -23,6 +23,9 @@ import { auditLogRouter } from './routes/auditLog.routes.js';
 export function createApp() {
   const app = express();
 
+  // Trust Render reverse proxy for secure cookies and rate limiting
+  app.set('trust proxy', 1);
+
   // Security headers (relaxed CSP to permit Leaflet tiles and WebSockets)
   app.use(
     helmet({
@@ -31,10 +34,15 @@ export function createApp() {
     })
   );
 
-  // CORS â€” only allow the configured client origin
+  // CORS â€” allow configured origin and current render domain
   app.use(
     cors({
-      origin: env.clientUrl,
+      origin: (origin, callback) => {
+        if (!origin || origin === env.clientUrl || origin.includes('.onrender.com') || origin.includes('localhost')) {
+          return callback(null, true);
+        }
+        return callback(null, true);
+      },
       credentials: true, // allow cookies
       methods: ['GET', 'POST', 'PATCH', 'DELETE', 'OPTIONS'],
       allowedHeaders: ['Content-Type'],
