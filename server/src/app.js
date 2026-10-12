@@ -71,9 +71,9 @@ export function createApp() {
   const clientDist = path.resolve(__dirname, '../../client/dist');
   app.use(express.static(clientDist));
 
-  // SPA fallback for non-API client routes
-  app.get('*', (req, res, next) => {
-    if (req.path.startsWith('/api') || req.path === '/health') {
+  // SPA fallback for non-API client routes (Express 5 compatible)
+  app.use((req, res, next) => {
+    if (req.method !== 'GET' || req.path.startsWith('/api') || req.path === '/health') {
       return next();
     }
     const indexPath = path.join(clientDist, 'index.html');
