@@ -1,4 +1,4 @@
-﻿// src/collectors/lanReceiver.js
+// src/collectors/lanReceiver.js
 import dgram from 'dgram';
 import net from 'net';
 import { ingestHardwareTelemetry } from '../services/collection.service.js';
@@ -42,6 +42,10 @@ export function startUdpLanListener(port = 5001) {
     }
   });
 
+  socket.on('error', (err) => {
+    logger.warn({ err: err.message }, 'UDP LAN Cable Receiver error');
+  });
+
   socket.bind(port, () => {
     logger.info({ port }, 'UDP LAN Cable Receiver listening for physical sensor telemetry');
   });
@@ -52,16 +56,29 @@ export function startUdpLanListener(port = 5001) {
 // 2. TCP LAN Cable Listener (Default port 5002)
 export function startTcpLanListener(port = 5002) {
   const server = net.createServer((socket) => {
-    logger.info({ client: socket.remoteAddress }, 'Hardware sensor connected via TCP over LAN cable');
-
     socket.on('data', async (chunk) => {
       try {
-        const payload = JSON.parse(chunk.toString('utf8'));
+        const text = chunk.toString('utf8').trim();
+
+        // Gracefully handle HTTP health check probes (e.g. Render/cloud internal agents)
+        if (text.startsWith('HEAD ') || text.startsWith('GET ') || text.startsWith('OPTIONS ')) {
+          socket.write('HTTP/1.1 200 OK\r\nContent-Length: 0\r\nConnection: close\r\n\r\n');
+          socket.end();
+          return;
+        }
+
+        const payload = JSON.parse(text);
         await ingestHardwareTelemetry(payload);
       } catch (err) {
-        logger.error({ err }, 'Invalid TCP telemetry packet received over LAN');
+        logger.warn({ err: err.message }, 'Non-telemetry data received on TCP LAN port');
       }
     });
+
+    socket.on('error', () => {});
+  });
+
+  server.on('error', (err) => {
+    logger.warn({ err: err.message }, 'TCP LAN Cable Receiver error');
   });
 
   server.listen(port, () => {
