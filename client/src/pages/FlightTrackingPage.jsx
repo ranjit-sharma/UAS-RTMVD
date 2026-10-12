@@ -41,17 +41,29 @@ export function FlightTrackingPage() {
   const [isStarting, setIsStarting] = useState(false);
   const [stopConfirmId, setStopConfirmId] = useState(null);
 
+  const mapboxToken = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN || 'myaccessToken';
+
   const mapTypes = {
     osm: { 
-      name: 'Street Map', 
+      name: 'Street Map (CartoDB)', 
       url: 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', 
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>' 
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+      maxZoom: 19
+    },
+    mapbox: {
+      name: 'Mapbox Streets',
+      url: `https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=${mapboxToken}`,
+      attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery &copy; <a href="https://www.mapbox.com/">Mapbox</a>',
+      maxZoom: 18,
+      tileSize: 512,
+      zoomOffset: -1
     },
     satellite: { 
       name: 'Satellite', 
       url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', 
       overlayUrl: 'https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}', 
-      attribution: '&copy; Esri' 
+      attribution: '&copy; Esri',
+      maxZoom: 19
     }
   };
   const [selectedMapType, setSelectedMapType] = useState('osm');
@@ -197,9 +209,15 @@ export function FlightTrackingPage() {
               setIsAutoPanEnabled={setIsAutoPanEnabled}
             />
             
-            <TileLayer url={mapTypes[selectedMapType].url} attribution={mapTypes[selectedMapType].attribution} />
+            <TileLayer 
+              url={mapTypes[selectedMapType].url} 
+              attribution={mapTypes[selectedMapType].attribution} 
+              maxZoom={mapTypes[selectedMapType].maxZoom || 18}
+              tileSize={mapTypes[selectedMapType].tileSize || 256}
+              zoomOffset={mapTypes[selectedMapType].zoomOffset || 0}
+            />
             {mapTypes[selectedMapType].overlayUrl && (
-              <TileLayer url={mapTypes[selectedMapType].overlayUrl} zIndex={10} />
+              <TileLayer url={mapTypes[selectedMapType].overlayUrl} zIndex={10} maxZoom={mapTypes[selectedMapType].maxZoom || 18} />
             )}
             
             {showTrajectory && (
