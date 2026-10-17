@@ -1,4 +1,4 @@
-# UASS Monitoring System
+# UASS Monitoring System.
 
 UASS Monitoring System is a full-stack web application for monitoring Upper Air
 Sounding System telemetry. It provides authenticated dashboards for live
