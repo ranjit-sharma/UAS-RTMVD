@@ -13,7 +13,7 @@ external equipment over UDP/TCP LAN listeners.
 > demonstration. Hardware ingestion is implemented as a telemetry receiver,
 > but the application does not include a device-specific radiosonde driver.
 
-## project live
+## project live.
 [https://uass-monitoring-system.onrender.com]
 
 
