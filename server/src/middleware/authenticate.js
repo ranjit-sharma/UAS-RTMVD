@@ -1,4 +1,4 @@
-﻿// src/middleware/authenticate.js
+// src/middleware/authenticate.js
 import jwt from 'jsonwebtoken';
 import { env } from '../config/env.js';
 import { ApiError } from '../utils/ApiError.js';
@@ -24,7 +24,7 @@ export const authenticate = asyncHandler(async (req, _res, next) => {
     return next();
   }
 
-  const token = req.cookies?.[env.cookieName];
+  const token = req.cookies?.[env.cookieName] || req.cookies?.['uas_rtmvd_auth'] || req.cookies?.['uass_auth'];
 
   if (!token) {
     throw ApiError.unauthorized('Authentication required');

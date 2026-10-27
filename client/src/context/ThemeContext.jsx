@@ -1,4 +1,4 @@
-﻿import { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useState, useEffect } from 'react';
 
 const ThemeContext = createContext(null);
 
@@ -12,21 +12,22 @@ export const THEMES = [
 
 export function ThemeProvider({ children }) {
   const [uiStyle, setUiStyle] = useState(() => {
-    return localStorage.getItem('uass_ui_style') || 'neu';
+    return localStorage.getItem('uas_ui_style') || localStorage.getItem('uass_ui_style') || 'neu';
   });
 
   const [isDarkMode, setIsDarkMode] = useState(() => {
-    return localStorage.getItem('uass_dark_mode') === 'true';
+    const saved = localStorage.getItem('uas_dark_mode') || localStorage.getItem('uass_dark_mode');
+    return saved === 'true';
   });
 
   useEffect(() => {
     document.documentElement.setAttribute('data-style', uiStyle);
-    localStorage.setItem('uass_ui_style', uiStyle);
+    localStorage.setItem('uas_ui_style', uiStyle);
   }, [uiStyle]);
 
   useEffect(() => {
     document.documentElement.setAttribute('data-dark', isDarkMode.toString());
-    localStorage.setItem('uass_dark_mode', isDarkMode.toString());
+    localStorage.setItem('uas_dark_mode', isDarkMode.toString());
   }, [isDarkMode]);
 
   const toggleDarkMode = () => {

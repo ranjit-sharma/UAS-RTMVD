@@ -1,7 +1,7 @@
 {
-  "name": "uass-monitoring-system",
+  "name": "uas-rtmvd",
   "version": "1.0.0",
-  "description": "UASS Real-Time Monitoring and Visualization System — monorepo root",
+  "description": "UAS-RTMVD Real-Time Monitoring and Visualization Dashboard — monorepo root",
   "private": true,
   "scripts": {
     "build": "npm install --prefix server && npm install --prefix client --include=dev && npm run build --prefix client",

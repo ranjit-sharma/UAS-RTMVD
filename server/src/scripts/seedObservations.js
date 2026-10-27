@@ -1,4 +1,4 @@
-﻿// src/scripts/seedObservations.js
+// src/scripts/seedObservations.js
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import { Observation } from '../models/observation.model.js';
@@ -20,7 +20,7 @@ async function seed() {
     if (!user) {
       user = await User.create({
         name: 'System Admin',
-        email: 'admin@uass.local',
+        email: 'admin@uas-rtmvd.local',
         passwordHash: '$2b$12$DUMMY_HASH_FOR_SEED_ONLY_DO_NOT_USE_00000000000000000',
         role: 'admin',
         isActive: true,

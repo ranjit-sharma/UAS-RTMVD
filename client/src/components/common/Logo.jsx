@@ -8,7 +8,7 @@ export function Logo({ size = 'medium', showText = true, className = '' }) {
 
   return (
     <div className={`flex items-center gap-3 select-none ${className}`}>
-      {/* High-Tech UASS Radiosonde Radar SVG Icon */}
+      {/* High-Tech UAS-RTMVD Radiosonde Radar SVG Icon */}
       <div
         className={`flex items-center justify-center shrink-0 rounded-2xl ${iconSizes[size]} relative overflow-hidden shadow-lg shadow-black/20`}
         style={{ background: 'var(--text-main)', color: 'var(--neu-bg)' }}
@@ -34,10 +34,10 @@ export function Logo({ size = 'medium', showText = true, className = '' }) {
       {showText && (
         <div className="flex flex-col text-left">
           <h1 className="font-bold text-base tracking-tight grad-text-primary leading-none">
-            UASS Monitor
+            UAS-RTMVD
           </h1>
           <p className="text-subtle text-[11px] font-medium tracking-wide mt-1">
-            Upper Air Sounding System
+            Real-Time Monitoring & Visualization
           </p>
         </div>
       )}

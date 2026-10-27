@@ -4,11 +4,11 @@ const DataSourceContext = createContext();
 
 export function DataSourceProvider({ children }) {
   const [dataSourceMode, setDataSourceModeState] = useState(() => {
-    return localStorage.getItem('uass_data_source') || 'instrument';
+    return localStorage.getItem('uas_data_source') || localStorage.getItem('uass_data_source') || 'instrument';
   }); // 'instrument' or 'simulated'
 
   const setDataSourceMode = (mode) => {
-    localStorage.setItem('uass_data_source', mode);
+    localStorage.setItem('uas_data_source', mode);
     setDataSourceModeState(mode);
   };
 

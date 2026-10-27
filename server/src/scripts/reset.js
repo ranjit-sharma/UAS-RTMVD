@@ -9,7 +9,7 @@ async function reset() {
   }
   await mongoose.connect(process.env.MONGODB_URI);
   const hash = await bcrypt.hash('password123', 12);
-  await User.updateOne({ email: 'admin@uass.local' }, { passwordHash: hash });
+  await User.updateMany({ email: { $in: ['admin@uas-rtmvd.local', 'admin@uass.local'] } }, { passwordHash: hash });
   console.log('Password reset to password123');
   process.exit(0);
 }

@@ -1,4 +1,4 @@
-﻿// src/pages/LoginPage.jsx ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â MVC View Layer
+// src/pages/LoginPage.jsx ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â MVC View Layer
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -77,9 +77,9 @@ export function LoginPage() {
         >
           <div className="relative z-10 text-white drop-shadow-lg">
             <Logo size="large" showText={false} />
-            <h1 className="text-4xl font-extrabold mt-6 leading-tight tracking-tight">UASS<br />Monitor</h1>
+            <h1 className="text-4xl font-extrabold mt-6 leading-tight tracking-tight">UAS-<br />RTMVD</h1>
             <p className="mt-4 text-white/90 text-sm font-medium leading-relaxed">
-              Upper Air Sounding System.<br/><br/>Welcome to the central command hub. This advanced telemetry suite provides real-time atmospheric tracking, live environmental payload monitoring, and historical flight data analysis all in one seamless interface.
+              Real-Time Monitoring and Visualization Dashboard.<br/><br/>Welcome to the central command hub. This advanced telemetry suite provides real-time atmospheric tracking, live environmental payload monitoring, and historical flight data analysis all in one seamless interface.
             </p>
           </div>
           
@@ -97,8 +97,8 @@ export function LoginPage() {
           {/* Mobile Header (Only visible on small screens) */}
           <div className="md:hidden flex flex-col items-center text-center mb-8">
             <Logo size="medium" showText={false} />
-            <h1 className="text-2xl font-extrabold grad-text-primary mt-4 tracking-tight">UASS Monitor</h1>
-            <p className="text-subtle text-xs mt-1">Upper Air Sounding System</p>
+            <h1 className="text-2xl font-extrabold grad-text-primary mt-4 tracking-tight">UAS-RTMVD</h1>
+            <p className="text-subtle text-xs mt-1">Real-Time Monitoring & Visualization Dashboard</p>
           </div>
 
           <div className="mb-8">
@@ -107,7 +107,7 @@ export function LoginPage() {
             </h2>
             <p className="text-subtle text-sm mt-1">
               {isRegistering
-                ? 'Create a viewer account to access the monitoring system.'
+                ? 'Create a viewer account to access UAS-RTMVD.'
                 : 'Please enter your credentials to access the system.'}
             </p>
           </div>
@@ -160,7 +160,7 @@ export function LoginPage() {
                 autoComplete="email"
                 {...register('email')}
                 className="neu-pressed w-full px-4 py-3.5 text-main text-sm rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--accent-primary)] focus:border-transparent transition-all"
-                placeholder="admin@uass.local"
+                placeholder="admin@uas-rtmvd.local"
               />
               {errors.email && (
                 <p className="mt-1.5 text-red-500 text-xs font-semibold">{errors.email.message}</p>

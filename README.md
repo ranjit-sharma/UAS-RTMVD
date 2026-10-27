@@ -1,6 +1,6 @@
-# UASS Monitoring System.
+# UAS-RTMVD
 
-UASS Monitoring System is a full-stack web application for monitoring Upper Air
+UAS-RTMVD is a full-stack web application for monitoring Upper Air
 Sounding System telemetry. It provides authenticated dashboards for live
 atmospheric observations, sounding sessions, flight tracking, historical
 analysis, CSV export, user administration, and audit review.
@@ -122,7 +122,7 @@ Clone the repository and install dependencies for both packages:
 
 ```bash
 git clone <repository-url>
-cd UASS-Monitoring-System
+cd UAS-RTMVD
 
 cd server
 npm install
@@ -146,7 +146,7 @@ MONGODB_URI=mongodb+srv://<username>:<password>@<cluster-host>/<database>?retryW
 MONGODB_DNS_SERVERS=8.8.8.8,1.1.1.1
 JWT_SECRET=replace_with_a_strong_random_secret_at_least_32_chars
 JWT_EXPIRES_IN=8h
-COOKIE_NAME=uass_auth
+COOKIE_NAME=uas_rtmvd_auth
 CLIENT_URL=http://localhost:5173
 SIMULATOR_INTERVAL_MS=3000
 ```
@@ -251,7 +251,7 @@ NODE_ENV=production
 MONGODB_URI=<your-mongodb-atlas-connection-string>
 JWT_SECRET=<a-strong-random-secret-at-least-32-characters>
 JWT_EXPIRES_IN=8h
-COOKIE_NAME=uass_auth
+COOKIE_NAME=uas_rtmvd_auth
 CLIENT_URL=https://<your-frontend-service>.onrender.com
 SIMULATOR_INTERVAL_MS=3000
 ```
@@ -398,7 +398,7 @@ The frontend tests run in a jsdom environment with the setup in
 ## Project structure
 
 ```text
-UASS-Monitoring-System/
+UAS-RTMVD/
 ├── client/
 │   ├── src/
 │   │   ├── components/       Reusable charts, layout, and UI components

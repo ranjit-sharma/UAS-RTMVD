@@ -1,4 +1,4 @@
-﻿// src/server.js
+// src/server.js
 import { env } from './config/env.js';
 import { connectDatabase } from './config/database.js';
 import { createApp } from './app.js';
@@ -40,7 +40,7 @@ async function start() {
     httpServer.listen(env.port, () => {
       logger.info(
         { port: env.port, env: env.nodeEnv },
-        'UASS server started'
+        'UAS-RTMVD server started'
       );
     });
   } catch (err) {

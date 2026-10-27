@@ -1,4 +1,4 @@
-﻿// src/sockets/socket.server.js
+// src/sockets/socket.server.js
 import { Server } from 'socket.io';
 import jwt from 'jsonwebtoken';
 import { env } from '../config/env.js';
@@ -59,7 +59,7 @@ function authenticateSocket(socket, next) {
     // Parse cookies from the handshake headers
     const cookieHeader = socket.handshake.headers.cookie || '';
     const cookies = parseCookies(cookieHeader);
-    const token = cookies[env.cookieName];
+    const token = cookies[env.cookieName] || cookies['uas_rtmvd_auth'] || cookies['uass_auth'];
 
     if (!token) {
       return next(new Error('Authentication required'));

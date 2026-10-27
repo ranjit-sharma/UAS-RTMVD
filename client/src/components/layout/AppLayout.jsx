@@ -67,7 +67,7 @@ export function AppLayout() {
             </button>
             <div className="flex items-center gap-2">
               <Logo size="small" showText={false} />
-              <span className="font-extrabold text-sm tracking-tight text-main">UASS Monitor</span>
+              <span className="font-extrabold text-sm tracking-tight text-main">UAS-RTMVD</span>
             </div>
           </div>
 

@@ -1,4 +1,4 @@
-# UASS Monitoring System — Data Format
+# UAS-RTMVD — Data Format
 
 ## Observation Object
 
@@ -72,11 +72,11 @@ The simulator uses a simplified International Standard Atmosphere (ISA) model:
 
 ## Hardware Integration Interface
 
-To connect real UASS hardware (e.g., RS41 or RS92 radiosonde ground station), implement the `IDataSource` interface:
+To connect real UAS hardware (e.g., RS41 or RS92 radiosonde ground station), implement the `IDataSource` interface:
 
 ```js
 /**
- * IDataSource — Data source interface for UASS hardware adapters.
+ * IDataSource — Data source interface for UAS hardware adapters.
  * Implement this class to integrate a real instrument.
  */
 class IDataSource {

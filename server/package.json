@@ -1,7 +1,7 @@
 {
-  "name": "uass-server",
+  "name": "uas-rtmvd-server",
   "version": "1.0.0",
-  "description": "UASS Monitoring System — Backend API",
+  "description": "UAS-RTMVD — Backend API",
   "main": "src/server.js",
   "type": "module",
   "scripts": {
