@@ -1,6 +1,6 @@
 # UAS-RTMVD
 
-UAS-RTMVD is a full-stack web application for monitoring Upper Air
+UAS-RTMVD (Upper Air Sounding Real Time Monitoring Visualization Dashboard) is a full-stack web application for monitoring Upper Air
 Sounding System telemetry. It provides authenticated dashboards for live
 atmospheric observations, sounding sessions, flight tracking, historical
 analysis, CSV export, user administration, and audit review.

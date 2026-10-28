@@ -2,7 +2,7 @@
 
 ## Overview
 
-The UAS-RTMVD application is a **modular monolithic** web application built on the MERN stack. It follows Model-View-Controller (MVC) principles on the backend and a feature-based component architecture on the frontend.
+The UAS-RTMVD (Upper Air Sounding Real Time Monitoring Visualization Dashboard) application is a **modular monolithic** web application built on the MERN stack. It follows Model-View-Controller (MVC) principles on the backend and a feature-based component architecture on the frontend.
 
 ---
 

@@ -37,7 +37,7 @@ export function Logo({ size = 'medium', showText = true, className = '' }) {
             UAS-RTMVD
           </h1>
           <p className="text-subtle text-[11px] font-medium tracking-wide mt-1">
-            Real-Time Monitoring & Visualization
+            Upper Air Sounding Real Time Monitoring Visualization Dashboard
           </p>
         </div>
       )}

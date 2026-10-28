@@ -1,7 +1,7 @@
 {
   "name": "uas-rtmvd",
   "version": "1.0.0",
-  "description": "UAS-RTMVD Real-Time Monitoring and Visualization Dashboard — monorepo root",
+  "description": "UAS-RTMVD (Upper Air Sounding Real Time Monitoring Visualization Dashboard) — monorepo root",
   "private": true,
   "scripts": {
     "build": "npm install --prefix server && npm install --prefix client --include=dev && npm run build --prefix client",

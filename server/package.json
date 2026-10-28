@@ -1,7 +1,7 @@
 {
   "name": "uas-rtmvd-server",
   "version": "1.0.0",
-  "description": "UAS-RTMVD — Backend API",
+  "description": "UAS-RTMVD (Upper Air Sounding Real Time Monitoring Visualization Dashboard) — Backend API",
   "main": "src/server.js",
   "type": "module",
   "scripts": {
