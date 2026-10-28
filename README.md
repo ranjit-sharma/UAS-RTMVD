@@ -14,7 +14,7 @@ external equipment over UDP/TCP LAN listeners.
 > but the application does not include a device-specific radiosonde driver.
 
 ## project live.
-[https://uass-monitoring-system.onrender.com]
+[https://uas-rtmvd.onrender.com]
 
 
 ## Features
